@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fish Freshness AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🐟 Fish Freshness Detection AI</h1>
+
+    <!-- Upload Section -->
+    <div class="card">
+        <h2>Upload Image</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="card result-card">
+        <h2>Prediction Result</h2>
+
+        <p class="result-text">Result: <b>{{ result }}</b></p>
+        <p class="confidence">Confidence: {{ confidence }}%</p>
+
+        <div class="images">
+            <div>
+                <h4>Original</h4>
+                <img src="{{ image }}">
+            </div>
+
+            <div>
+                <h4>Grad-CAM</h4>
+                <img src="{{ heatmap }}">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Camera Section -->
+    <div class="card">
+        <h2>Live Camera Detection</h2>
+        <img class="camera" src="{{ url_for('video') }}">
+    </div>
+
+</div>
+
+</body>
+</html>

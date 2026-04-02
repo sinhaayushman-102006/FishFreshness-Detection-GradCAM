@@ -1,0 +1,12 @@
+torch
+torchvision
+timm
+flask
+opencv-python
+numpy
+pillow
+matplotlib
+scikit-learn
+grad-cam
+onnx
+onnxruntime
